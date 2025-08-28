@@ -1,0 +1,43 @@
+object gimenez {
+    method pagarSueldo(empleado) {
+        empleado.cobrarSueldo()
+    }
+}
+
+object galvan {
+    var bonus = 0
+    var ahorros = 0
+    method cuantoCobra(){
+        return 15000 + bonus
+    }
+    method cambioSueldo() {
+        return not (bonus == 0)
+    }
+    method cobrarSueldo(){
+        ahorros += 15000 + bonus
+    }
+    method cambiarSueldo(cant){
+        bonus += cant
+    }
+    method gastar(cant){
+        if(cant<= ahorros)
+            then ahorros -= cant
+            else deudas += cant
+    }
+}
+
+object baigorria {
+    var empanadasVendidas = 0
+    var sueldo = empanadasVendidas*15
+    var totalCobrado = 0
+    method cuantoCobra(){
+        sueldo
+    }
+    method venderEmpanadas(n){
+        empanadasVendidas += n
+    }
+    method cobrarSueldo(){
+        totalCobrado += sueldo
+        empanadasVendidas = 0
+    }   
+}
