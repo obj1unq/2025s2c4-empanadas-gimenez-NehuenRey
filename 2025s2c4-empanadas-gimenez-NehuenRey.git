@@ -1,43 +1,63 @@
-object gimenez {
+object gimenez{
+    var fondo = 300000
+
+    method fondo(){
+        return fondo
+    }
+
     method pagarSueldo(empleado) {
-        empleado.cobrarSueldo()
+        fondo -= empleado.sueldo()
+        empleado.cobrarSueldo() 
     }
 }
 
-object galvan {
-    var bonus = 0
-    var ahorros = 0
+object galvan{
+    var dinero = 0
+    var property sueldo = 15000
     method cuantoCobra(){
-        return 15000 + bonus
+        return sueldo
     }
-    method cambioSueldo() {
-        return not (bonus == 0)
+    method cambioSueldo(sueldoNuevo) {
+        sueldo = sueldoNuevo
     }
     method cobrarSueldo(){
-        ahorros += 15000 + bonus
+        dinero += sueldo
     }
-    method cambiarSueldo(cant){
-        bonus += cant
+
+    method deuda (){
+        return if dinero <= 0 
+                    then -1*dinero 
+                    else 0
+    }
+
+    method ahorros(){
+        return if dinero >= 0 
+                    then dinero 
+                    else 0
     }
     method gastar(cant){
-        if(cant<= ahorros)
-            then ahorros -= cant
-            else deudas += cant
+        dinero -= cant
     }
+
 }
+
+
+
 
 object baigorria {
     var empanadasVendidas = 0
-    var sueldo = empanadasVendidas*15
     var totalCobrado = 0
-    method cuantoCobra(){
-        sueldo
+    property precioPorEmpanada = 15
+
+    method venderEmpanadas(cantidad){
+        empanadasVendidas += cantidad
     }
-    method venderEmpanadas(n){
-        empanadasVendidas += n
+
+    method sueldo(){
+        return empanadasVendidas * precioPorEmpanada
     }
     method cobrarSueldo(){
-        totalCobrado += sueldo
+        totalCobrado += empanadasVendidas * precioPorEmpanada
         empanadasVendidas = 0
     }   
 }
